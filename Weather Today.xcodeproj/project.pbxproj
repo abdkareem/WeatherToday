@@ -13,6 +13,8 @@
 		5127F2CA1CD869B700D2CEDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127F2C81CD869B700D2CEDC /* Main.storyboard */; };
 		5127F2CC1CD869B700D2CEDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5127F2CB1CD869B700D2CEDC /* Assets.xcassets */; };
 		5127F2CF1CD869B700D2CEDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127F2CD1CD869B700D2CEDC /* LaunchScreen.storyboard */; };
+		5127F2D71CD86AF000D2CEDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5127F2D61CD86AF000D2CEDC /* UIKit.framework */; };
+		5127F2D91CD86AFF00D2CEDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5127F2D81CD86AFF00D2CEDC /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		5127F2CB1CD869B700D2CEDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5127F2CE1CD869B700D2CEDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5127F2D01CD869B700D2CEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5127F2D61CD86AF000D2CEDC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5127F2D81CD86AFF00D2CEDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5127F2D91CD86AFF00D2CEDC /* Foundation.framework in Frameworks */,
+				5127F2D71CD86AF000D2CEDC /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +48,8 @@
 		5127F2B31CD869B700D2CEDC = {
 			isa = PBXGroup;
 			children = (
+				5127F2D81CD86AFF00D2CEDC /* Foundation.framework */,
+				5127F2D61CD86AF000D2CEDC /* UIKit.framework */,
 				5127F2BE1CD869B700D2CEDC /* Weather Today */,
 				5127F2BD1CD869B700D2CEDC /* Products */,
 			);

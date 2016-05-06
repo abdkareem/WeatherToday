@@ -308,6 +308,7 @@
 				5127F2D51CD869B700D2CEDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

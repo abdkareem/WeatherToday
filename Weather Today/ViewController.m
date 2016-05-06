@@ -9,9 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController () {
-    NSMutableArray *citiesList;
-    //primary api url string. everything is appended to it.
+    NSDictionary *citiesList;
+    //primary api url string. All parameters are appended to it.
     NSMutableString *apiURLString;
+    NSArray *rowsValuesHolder;
+    id vari;
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *chooseCity;
 
@@ -19,9 +21,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *maxTemp;
 
 @property (weak, nonatomic) IBOutlet UITextField *minTemp;
+//@property (weak, nonatomic) NSMutableString * apiURLString;
 
 - (void)setCitiesList;
-- (void)setApiUrl: (NSString*)cityName;
+- (void)setApiUrl: (NSNumber*)cityId;
 
 
 @end
@@ -42,8 +45,28 @@
 }
 
 //setting data in array for picker view
+//dictionary literal syntax and other @ http://rypress.com/tutorials/objective-c/data-types/nsdictionary
 - (void)setCitiesList {
-    citiesList = [NSMutableArray arrayWithObjects:@"London", @"San Francisco", @"Hyderabad", @"Fremont", @"Dubai", @"Berlin", @"Sydney", @"Tokyo", nil];
+    citiesList = @{
+                   //Cities can also be stored in NSArray and api calls can be made using city names
+                   //inorder to elminate conflicts arising due to same city names, using unique city ids
+                   @"Beijing" : [NSNumber numberWithInt:1816670],
+                   @"Bangalore" : [NSNumber numberWithInt:1277333],
+                   @"Chicago" : [NSNumber numberWithInt:4915963],
+                   @"Dubai" : [NSNumber numberWithInt:292223],
+                   @"England" : [NSNumber numberWithInt:6269131],
+                   @"Fremont" : [NSNumber numberWithInt:5350734],
+                   @"HoChi Minh" : [NSNumber numberWithInt:1580578],
+                   @"Hyderabad" : [NSNumber numberWithInt:1269843],
+                   @"Istanbul" : [NSNumber numberWithInt:745044],
+                   @"Riyadh" : [NSNumber numberWithInt:108410],
+                   @"San Francisco" : [NSNumber numberWithInt:5391959],
+                   @"Santa Clara" : [NSNumber numberWithInt:5393015],
+                   @"San Jose" : [NSNumber numberWithInt:5392171],
+                   @"Sydney" : [NSNumber numberWithInt:6619279],
+                   @"Sweden" : [NSNumber numberWithInt:2661886],
+                   @"Tokyo" : [NSNumber numberWithInt:1850147],
+                   };
 }
 
 /***********PickerViewDataSource Delegates Protocol*******************/
@@ -64,20 +87,23 @@
 
 //setting the rows for the picker
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return citiesList[row];
+    rowsValuesHolder = [citiesList allKeys];
+    return rowsValuesHolder[row];
 }
 
 //identifying the row selected using picker delegate
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSLog(@"Selected row is %@", citiesList[row]);
-    [self setApiUrl: citiesList[row]];
+    //NSLog(@"Selected row is %@", citiesList[row]);
+    rowsValuesHolder = [citiesList allValues];
+    [self setApiUrl: rowsValuesHolder[row]];
 }
 /***********************END************************/
 
 //setting api url string
--(void)setApiUrl: (NSString*)cityName {
-    apiURLString = [NSMutableString stringWithString:@"http://api.openweathermap.org/data/2.5/weather?q="];
-    [apiURLString appendString:cityName];
+-(void)setApiUrl: (NSNumber*)cityId {
+    apiURLString = [NSMutableString stringWithString:@"http://api.openweathermap.org/data/2.5/weather?id="];
+    [apiURLString appendFormat:@"%@", cityId];
+    //[apiURLString appendString:cityName];
     //appending app id
     [apiURLString appendString:@"&appid=594c02ebb0b04deddc5df03301a4eb44"];
     [apiURLString appendString:@"&type=accurate&units=imperial"];
@@ -110,20 +136,32 @@
             return;
         }
         NSError *parseError;
-        id vari = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+        vari = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
         if (!vari) {
             NSLog(@"Parse error %@", parseError);
         }
-        NSLog(@"\nThe temp is: %@",vari[@"main"][@"temp"]);
+        NSLog(@"\nThe weather today is: %@",vari[@"weather"][0][@"description"]);
+        NSLog(@"\nTemp is: %@",vari[@"main"][@"temp"]);
+        NSLog(@"\nHumidty is: %@",vari[@"main"][@"humidity"]);
         NSLog(@"\nJSON response is: %@",vari);
         //pull main thread and put the data on UI
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.temp.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"temp"]];
-            self.maxTemp.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"temp_max"]];
-            self.minTemp.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"temp_min"]];
+            
+            /*******WARNING. Don't go with label names. Comments indicate recent updates*************/
+            
+            //temp label now displays weather description
+            self.temp.text = [NSString stringWithFormat:@"%@",vari[@"weather"][0][@"description"]];
+            //maxTemp label now displays temp
+            self.maxTemp.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"temp"]];
+            self.minTemp.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"humidity"]];
         });
+        
     }]resume];
+    
 }
+
+//found something intresting http://stackoverflow.com/jobs/115035/interested-in-building-an-ios-apps-compucom-inc?med=clc&ref=small-sidebar-tag-themed-ios
+
  
  
 @end

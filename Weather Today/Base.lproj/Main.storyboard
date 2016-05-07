@@ -50,7 +50,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Humidity" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4DC-OC-xLj">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Humidity (%)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4DC-OC-xLj">
                                 <rect key="frame" x="20" y="445" width="132" height="30"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -76,6 +76,13 @@
                                 <animations/>
                                 <state key="normal" title="More.."/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="*data &lt; 2 hrs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qnT-Ih-IcE">
+                                <rect key="frame" x="114" y="539" width="95" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,6 +92,7 @@
                             <constraint firstItem="qKY-2W-h0N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="118" id="Bl8-PX-M9w"/>
                             <constraint firstItem="aJx-sU-lXZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="41" id="CmC-UC-xUM"/>
                             <constraint firstItem="bWR-GX-XJq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DER-ys-Pkv"/>
+                            <constraint firstItem="qnT-Ih-IcE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DGt-V0-qiE"/>
                             <constraint firstItem="qKY-2W-h0N" firstAttribute="top" secondItem="4DC-OC-xLj" secondAttribute="bottom" constant="26" id="Ehf-9p-8ne"/>
                             <constraint firstItem="8e1-g8-6YO" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RGw-PL-yF1"/>
                             <constraint firstItem="nU3-Aj-Naq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Rbn-M8-7oH"/>
@@ -95,6 +103,7 @@
                             <constraint firstItem="4EQ-5p-ZkM" firstAttribute="width" secondItem="8e1-g8-6YO" secondAttribute="width" id="mia-AR-8HR"/>
                             <constraint firstItem="aJx-sU-lXZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ocG-LI-p77"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qKY-2W-h0N" secondAttribute="trailing" constant="118" id="sxL-JS-7rb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qnT-Ih-IcE" secondAttribute="bottom" constant="8" id="uyG-UQ-Pvg"/>
                             <constraint firstItem="bWR-GX-XJq" firstAttribute="width" secondItem="Gv3-Fx-hS6" secondAttribute="width" id="zrH-Wu-Uro"/>
                         </constraints>
                     </view>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -14,20 +14,13 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pie-Jo-cJz">
-                                <rect key="frame" x="87" y="243" width="74" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Weather TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pie-Jo-cJz">
+                                <rect key="frame" x="93" y="289" width="144" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkr-Em-e4q">
-                                <rect key="frame" x="159" y="243" width="73" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -35,17 +28,14 @@
                         <animations/>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bkr-Em-e4q" firstAttribute="leading" secondItem="pie-Jo-cJz" secondAttribute="trailing" constant="-2" id="0Zh-A5-cL6"/>
-                            <constraint firstItem="pie-Jo-cJz" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="223" id="DUb-br-hlM"/>
-                            <constraint firstItem="bkr-Em-e4q" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="223" id="PfX-yJ-aL4"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="bkr-Em-e4q" secondAttribute="bottom" constant="304" id="sCE-nJ-hzX"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="pie-Jo-cJz" secondAttribute="bottom" constant="304" id="ubj-5x-UzG"/>
+                            <constraint firstItem="pie-Jo-cJz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="g5b-9W-b4L"/>
+                            <constraint firstItem="pie-Jo-cJz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vz4-aq-QId"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="355"/>
+            <point key="canvasLocation" x="52" y="375"/>
         </scene>
     </scenes>
 </document>

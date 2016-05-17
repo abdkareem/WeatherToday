@@ -159,6 +159,7 @@
     }]resume];
     
 }
+//Weather properties to be used in table view when more button is clicked: Cloud percentage, ground level, pressure, sea level, Wind speed and direction(degree),
 
 //found something intresting http://stackoverflow.com/jobs/115035/interested-in-building-an-ios-apps-compucom-inc?med=clc&ref=small-sidebar-tag-themed-ios
 

@@ -17,9 +17,13 @@
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *chooseCity;
 
+//Important Note: Label named temp is used for Weather
 @property (weak, nonatomic) IBOutlet UITextField *temp;
+
+//Important Note: Label named maxTemp is used for Temperature
 @property (weak, nonatomic) IBOutlet UITextField *maxTemp;
 
+//Important Note: Label named minTemp is used for Humidity
 @property (weak, nonatomic) IBOutlet UITextField *minTemp;
 //@property (weak, nonatomic) NSMutableString * apiURLString;
 
@@ -132,7 +136,7 @@
         //also refer to NSURLResponse class for its property statusCode
         NSHTTPURLResponse *pointerToDetStatusCode = (NSHTTPURLResponse *) response; //type casting ?
         if (pointerToDetStatusCode.statusCode < 200 || pointerToDetStatusCode.statusCode >= 300) {
-            NSLog(@"HTTP error status code %ld", pointerToDetStatusCode.statusCode);
+            NSLog(@"HTTP error status code %ld", (long)pointerToDetStatusCode.statusCode);
             return;
         }
         NSError *parseError;

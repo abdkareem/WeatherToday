@@ -14,19 +14,38 @@
     NSMutableString *apiURLString;
     NSArray *rowsValuesHolder;
     id vari;
+    NSArray *moreWeatherProperties;
 }
 @property (weak, nonatomic) IBOutlet UIPickerView *chooseCity;
 
-//Important Note: Label named temp is used for Weather
+//Update Note: Label named temp is used for Weather
 @property (weak, nonatomic) IBOutlet UITextField *temp;
 
-//Important Note: Label named maxTemp is used for Temperature
+//Update Note: Label named maxTemp is used for Temperature
 @property (weak, nonatomic) IBOutlet UITextField *maxTemp;
 
-//Important Note: Label named minTemp is used for Humidity
+//Update Note: Label named minTemp is used for Humidity
 @property (weak, nonatomic) IBOutlet UITextField *minTemp;
 //@property (weak, nonatomic) NSMutableString * apiURLString;
 
+@property (weak, nonatomic) IBOutlet UITextField *maxTempField;
+@property (weak, nonatomic) IBOutlet UITextField *minTempField;
+
+@property (weak, nonatomic) IBOutlet UITextField *tempField;
+
+@property (weak, nonatomic) IBOutlet UILabel *noteLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *humidityField;
+
+@property (weak, nonatomic) IBOutlet UITextField *atmosphericPressureField;
+
+@property (weak, nonatomic) IBOutlet UITextField *weatherField;
+
+@property (weak, nonatomic) IBOutlet UITextField *cloudPercentageField;
+@property (weak, nonatomic) IBOutlet UITextField *rainField;
+@property (weak, nonatomic) IBOutlet UITextField *windSpeedField;
+
+@property (weak, nonatomic) IBOutlet UITextField *windDirecField;
 - (void)setCitiesList;
 - (void)setApiUrl: (NSNumber*)cityId;
 
@@ -41,6 +60,10 @@
     [self setCitiesList];
     self.chooseCity.dataSource = self;
     self.chooseCity.delegate = self;
+    //moreWeatherProperties = @[@"Cloud Percentage", @"Wind Direction", @"Wind Speed", @"Temperature Max", @"Temperature Min"];
+    moreWeatherProperties = [NSArray alloc];
+    //[moreWeatherProperties initWithObjects:vari[@"weather"][0][@"description"], nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,6 +171,9 @@
         NSLog(@"\nTemp is: %@",vari[@"main"][@"temp"]);
         NSLog(@"\nHumidty is: %@",vari[@"main"][@"humidity"]);
         NSLog(@"\nJSON response is: %@",vari);
+        
+        //moreWeatherProperties = [NSArray arrayWithObjects:vari[@"weather"][0][@"description"], vari[@"main"][@"temp"], nil];
+        //NSLog(@"This is what I want : %@",moreWeatherProperties[0]);
         //pull main thread and put the data on UI
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -163,10 +189,105 @@
     }]resume];
     
 }
-//Weather properties to be used in table view when more button is clicked: Cloud percentage, ground level, pressure, sea level, Wind speed and direction(degree),
+- (IBAction)moreProperties:(id)sender {
+    UIStoryboard *refToStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UIViewController *pointerToMoreValuesVC = [refToStoryBoard instantiateViewControllerWithIdentifier:@"MorePropertiesVC"];
+    pointerToMoreValuesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:pointerToMoreValuesVC animated:YES completion:nil];
+    self.noteLabel.text = @"Random Text";
+    
+    /*dispatch_async(dispatch_get_main_queue(), ^{
+
+        self.maxTempField.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"\"temp_max\""]];
+        NSLog(@"Max Temp %@", vari[@"main"][@"temp_max"]);
+        self.atmosphericPresField.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"pressure"]];
+        self.windSpeed.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"speed"]];
+        NSLog(@"Speeed of the wind %@", vari[@"wind"][@"speed"]);
+    }); */
+    
+    self.maxTempField.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"temp_max"]];
+    NSLog(@"Max Temp %@", vari[@"main"][@"temp_max"]);
+    
+}
+
+
+//Weather properties to be used in table view when more button is clicked: Cloud percentage, ground level, pressure, sea level, Wind speed and direction(degree).
+
+- (IBAction)goBackToMainScreen:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+/*********************UITableViewDataSource protocol***************
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+    return [moreWeatherProperties count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *tableIdent = @"Table Identifier";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableIdent];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableIdent];
+    }
+    
+    cell.textLabel.text = moreWeatherProperties[indexPath.row];
+    NSLog(@"Does this worl %@", cell);
+    //[moreWeatherProperties objectAtIndex:indexPath.row];
+    return cell;
+}
+ 
+ ****************************************************************/
+
 
 //found something intresting http://stackoverflow.com/jobs/115035/interested-in-building-an-ios-apps-compucom-inc?med=clc&ref=small-sidebar-tag-themed-ios
 
- 
- 
+/*
+ {
+ base = "cmc stations";
+ clouds =     {
+ all = 0;
+ };
+ cod = 200;
+ coord =     {
+ lat = "25.26";
+ lon = "55.3";
+ };
+ dt = 1464022800;
+ id = 292223;
+ main =     {
+ humidity = 74;
+ pressure = 1004;
+ temp = 86;
+ "temp_max" = 86;
+ "temp_min" = 86;
+ };
+ name = Dubai;
+ sys =     {
+ country = AE;
+ id = 7100;
+ message = "0.0036";
+ sunrise = 1463967022;
+ sunset = 1464015669;
+ type = 1;
+ };
+ weather =     (
+ {
+ description = "clear sky";
+ icon = 01n;
+ id = 800;
+ main = Clear;
+ }
+ );
+ wind =     {
+ deg = 250;
+ speed = "6.93";
+ };
+ }
+ */
+
 @end

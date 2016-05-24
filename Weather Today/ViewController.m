@@ -196,18 +196,13 @@
     [self presentViewController:pointerToMoreValuesVC animated:YES completion:nil];
     self.noteLabel.text = @"Random Text";
     
-    /*dispatch_async(dispatch_get_main_queue(), ^{
-
-        self.maxTempField.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"\"temp_max\""]];
-        NSLog(@"Max Temp %@", vari[@"main"][@"temp_max"]);
-        self.atmosphericPresField.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"pressure"]];
-        self.windSpeed.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"speed"]];
-        NSLog(@"Speeed of the wind %@", vari[@"wind"][@"speed"]);
-    }); */
-    
-    self.maxTempField.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"temp_max"]];
+    self.maxTempField.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"temp_max"]];
     NSLog(@"Max Temp %@", vari[@"main"][@"temp_max"]);
     
+    self.atmosphericPressureField.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"pressure"]];
+    
+    self.windSpeedField.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"speed"]];
+    NSLog(@"Speeed of the wind %@", vari[@"wind"][@"speed"]);
 }
 
 

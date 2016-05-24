@@ -196,12 +196,16 @@
     [self presentViewController:pointerToMoreValuesVC animated:YES completion:nil];
     self.noteLabel.text = @"Random Text";
     
+    self.maxTempField.userInteractionEnabled = YES;
     self.maxTempField.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"temp_max"]];
     NSLog(@"Max Temp %@", vari[@"main"][@"temp_max"]);
     
+    self.atmosphericPressureField.userInteractionEnabled = YES;
     self.atmosphericPressureField.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"pressure"]];
     
+    self.windSpeedField.userInteractionEnabled = YES;
     self.windSpeedField.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"speed"]];
+    
     NSLog(@"Speeed of the wind %@", vari[@"wind"][@"speed"]);
 }
 

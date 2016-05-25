@@ -15,6 +15,7 @@
 		5127F2CF1CD869B700D2CEDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5127F2CD1CD869B700D2CEDC /* LaunchScreen.storyboard */; };
 		5127F2D71CD86AF000D2CEDC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5127F2D61CD86AF000D2CEDC /* UIKit.framework */; };
 		5127F2D91CD86AFF00D2CEDC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5127F2D81CD86AFF00D2CEDC /* Foundation.framework */; };
+		51E5F2411CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F2401CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		5127F2D01CD869B700D2CEDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5127F2D61CD86AF000D2CEDC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5127F2D81CD86AFF00D2CEDC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		51E5F23F1CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllWeatherPropertiesViewController.h; sourceTree = "<group>"; };
+		51E5F2401CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllWeatherPropertiesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 				5127F2C51CD869B700D2CEDC /* ViewController.h */,
 				5127F2C61CD869B700D2CEDC /* ViewController.m */,
 				5127F2C81CD869B700D2CEDC /* Main.storyboard */,
+				51E5F23F1CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.h */,
+				51E5F2401CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.m */,
 				5127F2CB1CD869B700D2CEDC /* Assets.xcassets */,
 				5127F2CD1CD869B700D2CEDC /* LaunchScreen.storyboard */,
 				5127F2D01CD869B700D2CEDC /* Info.plist */,
@@ -157,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E5F2411CF57BD000D2E5F8 /* AllWeatherPropertiesViewController.m in Sources */,
 				5127F2C71CD869B700D2CEDC /* ViewController.m in Sources */,
 				5127F2C41CD869B700D2CEDC /* AppDelegate.m in Sources */,
 				5127F2C11CD869B700D2CEDC /* main.m in Sources */,

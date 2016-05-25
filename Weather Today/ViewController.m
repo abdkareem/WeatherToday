@@ -7,15 +7,19 @@
 //
 
 #import "ViewController.h"
+#import "AllWeatherPropertiesViewController.h"
 
 @interface ViewController () {
+    
     NSDictionary *citiesList;
     //primary api url string. All parameters are appended to it.
     NSMutableString *apiURLString;
     NSArray *rowsValuesHolder;
     id vari;
     NSArray *moreWeatherProperties;
+
 }
+
 @property (weak, nonatomic) IBOutlet UIPickerView *chooseCity;
 
 //Update Note: Label named temp is used for Weather
@@ -28,24 +32,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *minTemp;
 //@property (weak, nonatomic) NSMutableString * apiURLString;
 
-@property (weak, nonatomic) IBOutlet UITextField *maxTempField;
-@property (weak, nonatomic) IBOutlet UITextField *minTempField;
-
-@property (weak, nonatomic) IBOutlet UITextField *tempField;
-
 @property (weak, nonatomic) IBOutlet UILabel *noteLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *humidityField;
 
-@property (weak, nonatomic) IBOutlet UITextField *atmosphericPressureField;
 
-@property (weak, nonatomic) IBOutlet UITextField *weatherField;
-
-@property (weak, nonatomic) IBOutlet UITextField *cloudPercentageField;
-@property (weak, nonatomic) IBOutlet UITextField *rainField;
-@property (weak, nonatomic) IBOutlet UITextField *windSpeedField;
-
-@property (weak, nonatomic) IBOutlet UITextField *windDirecField;
 - (void)setCitiesList;
 - (void)setApiUrl: (NSNumber*)cityId;
 
@@ -190,11 +180,13 @@
     
 }
 - (IBAction)moreProperties:(id)sender {
+    
     UIStoryboard *refToStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UIViewController *pointerToMoreValuesVC = [refToStoryBoard instantiateViewControllerWithIdentifier:@"MorePropertiesVC"];
-    pointerToMoreValuesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentViewController:pointerToMoreValuesVC animated:YES completion:nil];
-    self.noteLabel.text = @"Random Text";
+    
+    /******** Old Code Start **************
+    //UIViewController *pointerToMoreValuesVC = [refToStoryBoard instantiateViewControllerWithIdentifier:@"MorePropertiesVC"];
+    //pointerToMoreValuesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    //[self presentViewController:pointerToMoreValuesVC animated:YES completion:nil];
     
     self.maxTempField.userInteractionEnabled = YES;
     self.maxTempField.text = [NSString stringWithFormat:@"%@",vari[@"main"][@"temp_max"]];
@@ -207,6 +199,24 @@
     self.windSpeedField.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"speed"]];
     
     NSLog(@"Speeed of the wind %@", vari[@"wind"][@"speed"]);
+    ******** Old Code End *************/
+    
+    AllWeatherPropertiesViewController *pointerToAllWeatherPropertiesVC = [refToStoryBoard instantiateViewControllerWithIdentifier:@"AllWeatherPropertiesVC"];
+    pointerToAllWeatherPropertiesVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:pointerToAllWeatherPropertiesVC animated:YES completion:nil];
+    
+    pointerToAllWeatherPropertiesVC.maxTempF.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"temp_max"]];
+    pointerToAllWeatherPropertiesVC.minTempF.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"temp_min"]];
+    pointerToAllWeatherPropertiesVC.tempF.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"temp"]];
+    pointerToAllWeatherPropertiesVC.humidityF.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"humidity"]];
+    pointerToAllWeatherPropertiesVC.atmPressureF.text = [NSString stringWithFormat:@"%@", vari[@"main"][@"pressure"]];
+    pointerToAllWeatherPropertiesVC.weatherF.text = [NSString stringWithFormat:@"%@", vari[@"weather"][0][@"description"]];
+    pointerToAllWeatherPropertiesVC.cloudCoverageF.text = [NSString stringWithFormat:@"%@", vari[@"clouds"][@"all"]];
+    pointerToAllWeatherPropertiesVC.windSpeedF.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"speed"]];
+    pointerToAllWeatherPropertiesVC.windDirectionF.text = [NSString stringWithFormat:@"%@", vari[@"wind"][@"deg"]];
+    pointerToAllWeatherPropertiesVC.cityName.text = [NSString stringWithFormat:@"%@", vari[@"name"]];
+                        
+    
 }
 
 
